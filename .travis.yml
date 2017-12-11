@@ -29,6 +29,8 @@ install:
   - pip install djangorestframework coreapi markdown django-filter django-crispy-forms django-guardian
   - pip install coverage==4.4.2
   - pip install django-cors-headers
+  - pip install lettuce
+  - pip install selenium
   #- pip install psycopg2 --quiet
 
 before_script:
@@ -41,6 +43,7 @@ script:
   - python manage.py test apps/comedor/tests 
   - python manage.py test apps/supervisor/tests
   - python manage.py test apps/serviciosexternos/tests
+  - lettuce functional_tests/features/
 
 notifications:
   email: #false
