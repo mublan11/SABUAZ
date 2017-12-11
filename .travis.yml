@@ -11,7 +11,7 @@ language: python
 
 python:
   - 3.6
-  - 2.7
+  #- 2.7
 
 services: sqlite3
 
@@ -33,3 +33,8 @@ before_script:
 
 script:
   #- python manage.py syncdb --noinput
+  - python manage.py test apps/solicitante/tests
+  - python manage.py test apps/casaestudiantil/tests
+  - python manage.py test apps/comedor/tests 
+  - python manage.py test apps/supervisor/tests
+  - python manage.py test apps/serviciosexternos/tests
