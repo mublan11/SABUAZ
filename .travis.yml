@@ -51,7 +51,6 @@ script:
   - python manage.py test apps/comedor/tests 
   - python manage.py test apps/supervisor/tests
   - python manage.py test apps/serviciosexternos/tests
-  - python manage.py runserver
   - lettuce functional_tests/features
 
 notifications:
