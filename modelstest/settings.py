@@ -93,7 +93,19 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+"""A basic database set-up for Travis CI.
+The set-up uses the 'TRAVIS' (== True) environment variable on Travis
+to detect the session, and changes the default database accordingly.
+Be mindful of where you place this code, as you may accidentally
+assign the default database to another configuration later in your code.
+"""
+if 'TRAVIS' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
