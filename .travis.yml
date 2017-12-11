@@ -22,9 +22,17 @@ before_install:
   - export DJANGO_SETTINGS_MODULE=modelstest.settings
   - export PYTHONPATH=$HOME/builds/mublan11/SABUAZ
   - export PIP_USE_MIRRORS=true
-
+addons: # get google-chrome-stable
+  chrome: stable
+  
 install:
   #- pip install -r requirements.txt
+  - wget -N http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -P ~/
+  - unzip ~/chromedriver_linux64.zip -d ~/
+  - rm ~/chromedriver_linux64.zip
+  - sudo mv -f ~/chromedriver /usr/local/share/
+  - sudo chmod +x /usr/local/share/chromedriver
+  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
   - pip install django==$DJANGO --quiet
   - pip install djangorestframework coreapi markdown django-filter django-crispy-forms django-guardian
   - pip install coverage==4.4.2
@@ -43,8 +51,9 @@ script:
   - python manage.py test apps/comedor/tests 
   - python manage.py test apps/supervisor/tests
   - python manage.py test apps/serviciosexternos/tests
-  - lettuce functional_tests/features/
+  - python manage.py runserver
+  - lettuce functional_tests/features
 
 notifications:
-  email: #false
-    - jerad.salinas94@gmail.com
+  email: 
+    false
