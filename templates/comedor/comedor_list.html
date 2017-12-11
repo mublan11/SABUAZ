@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %} }
+
+{% block title %}Listado Comedores{% endblock %}
+
+{% block content %}
+<div class="content container">
+    <div class="content-wrapper col-md-10 col-sm-8">
+        <div class="page-row">
+            <h1 class="no-margin-top has-divider text-highlight">Comedores</h1>
+            <div class="table-responsive">
+                <table class="table table-boxed">
+                    <thead>
+                        <td>#</td>
+                        <td>Nombre</td>
+                        <td>Domicilio</td>
+                        <td>Teléfono</td>
+                        <td>Acciones</td>
+                    </thead>
+                    <tbody>
+                    {% if comedor %}
+                        {% for com in comedor %}
+                            <tr>
+                                <td>{{ com.id }}</td>
+                                <td>{{ com.nombre}}</td>
+                                <td>{{ com.domicilio_fk.calle}} {{ com.domicilio_fk.numero}} {{ com.domicilio_fk.colonia}} {{ com.domicilio_fk.codigo_postal}} </td>
+                                <td>{{ com.telefono_fk.id }}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="{% url 'comedor:comedor_editar' com.id %}">
+                                        Editar
+                                    </a>
+                                    <a class="btn btn-danger" href="{% url 'comedor:comedor_eliminar' com.id %}">
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <h1>No hay registros de comedores</h1>
+                    {% endif %}
+                    </tbody>
+                </table><!--//table-->
+            </div><!--//table-responsive-->
+        </div><!--//page-row-->
+    </div><!--//page-content-->
+</div><!--//content-->
+{% endblock %}

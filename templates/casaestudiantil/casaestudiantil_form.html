@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Formulario Casa Estudiantil{% endblock %}
+
+{% block content %}
+    <div class="content container">
+        <div class="content-wrapper col-md-10 col-sm-8">
+        <h3 class="has-divider text-highlight">Registrar Casa Estudiantil </h3>
+
+            <div class="form-responsive">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form_casa_estudiantil.as_p }}
+                    {{ form_descripcion_casa.as_p }}
+                    {{ form_domicilio.as_p }}
+                    {{ form_telefono.as_p }}
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div><!--//table-responsive-->
+        </div><!--//page-row-->
+    </div><!--//content-->
+{% endblock %}

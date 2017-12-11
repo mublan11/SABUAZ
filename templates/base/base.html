@@ -1,0 +1,141 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>
+        {% block title %}Inicio{% endblock %}
+    </title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>   
+    <!-- Global CSS -->
+    <link rel="stylesheet" href=" {% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/flexslider/flexslider.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/pretty-photo/css/prettyPhoto.css' %}">
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head> 
+
+<body class="home-page">
+    <div class="wrapper">
+        <!-- ******HEADER****** --> 
+        <header class="header">  
+            <div class="top-bar">
+                <div class="container">
+                    <p>                  </p>       
+                    <p>                  </p>       
+                    <p>                  </p>       
+                    <p>                  </p>       
+                    <p>                  </p>       
+                </div>      
+            </div><!--//to-bar-->
+            <div class="header-main container">
+            </div><!--//header-main-->
+        </header><!--//header-->
+        {% block navbar %}
+        <!-- ******NAV****** -->
+        <nav class="main-nav" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->            
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active nav-item"><a href="#">INICIO</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">Casas Estudiantiles <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'casaestudiantil:casaestudiantil_nuevo' %}">Registrar</a></li>
+                                <li><a href="{% url 'casaestudiantil:casaestudiantil_mostrar' %}">Listar</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">Comedores <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'comedor:comedor_nuevo' %}">Registrar</a></li>
+                                <li><a href="{% url 'comedor:comedor_mostrar' %}">Listar</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">Supervisores <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'supervisor:supervisor_nuevo' %}">Registrar</a></li>
+                                <li><a href="{% url 'supervisor:supervisor_mostrar' %}">Listar</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">Solicitantes <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'solicitante:solicitante_nuevo' %}">Registrar</a></li>
+                                <li><a href="{% url 'solicitante:solicitante_mostrar' %}">Listar</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="{% url 'logout' %}">Salir</a></li>
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </div><!--//container-->
+        </nav><!--//main-nav-->
+        {% endblock %}
+
+
+        <!-- ******CONTENT****** --> 
+        {% block content %}
+            <h1>Welcome</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        {% endblock %}
+
+    </div><!--//wrapper-->
+
+    {% comment %}<!-- ******FOOTER****** -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-6 col-sm-8 newsletter">
+                        <div class="footer-col-inner">
+                            <h3>Universidad Autónoma de Zacatecas</h3>
+                            <p>
+                                Jardín Juárez #147, Centro Histórico C.P. 98000 | Zacatecas, Zacatecas, México. |
+                                Tel. +52 (492) 92 22001, +52 (492) 92 22460, ext. 105. contacto@uaz.edu.mx
+                            </p>
+                        </div><!--//footer-col-inner-->
+                    </div>
+                </div>
+            </div>
+        </div><!--//footer-content-->
+    </footer><!--//footer-->{% endcomment %}
+ 
+    <!-- Javascript -->          
+    <script type="text/javascript" src="{% static 'plugins/jquery-1.12.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/bootstrap-hover-dropdown.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/back-to-top.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/jquery-placeholder/jquery.placeholder.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/pretty-photo/js/jquery.prettyPhoto.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/flexslider/jquery.flexslider-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/jflickrfeed/jflickrfeed.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+</html> 
+

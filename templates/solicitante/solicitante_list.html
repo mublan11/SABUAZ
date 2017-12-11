@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Lista Solicitantes{% endblock %}
+
+{% block content %}
+<div class="content container">
+    <div class="content-wrapper col-md-10 col-sm-8">
+        <div class="page-row">
+            <h1 class="no-margin-top has-divider text-highlight">Solicitantes</h1>
+            <div class="table-responsive">
+                <table class="table table-boxed">
+                    <thead>
+                        <td>#</td>
+                        <td>Nombre Completo</td>
+                        <td>Promedio</td>
+                        <td>Status</td>
+                        <td>Domicilio</td>
+                        <td>Teléfono</td>
+                        <td>Acciones</td>
+                    </thead>
+                    <tbody>
+                    {% if solicitante %}
+                        {% for sol in solicitante %}
+                            <tr>
+                                <td>{{ sol.id }}</td>
+                                <td>{{ sol.nombre}} {{ sol.apellido_paterno }} {{ sol.apellido_materno }}</td>
+                                <td>{{ sol.datos_academicos_fk.promedio}}</td>
+                                <td>{{ sol.status }}</td>
+                                <td>{{ sol.domicilio_fk.calle}} {{ sol.domicilio_fk.numero}} {{ sol.domicilio_fk.colonia}} {{ sol.domicilio_fk.codigo_postal}} </td>
+                                <td>{{ sol.telefono_fk.telefono }}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="{% url 'solicitante:solicitante_editar' sol.id %}">
+                                        Editar
+                                    </a>
+                                    <a class="btn btn-danger" href="{% url 'solicitante:solicitante_eliminar' sol.id %}">
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <h1>No hay registros de solicitantes</h1>
+                    {% endif %}
+                    </tbody>
+                </table><!--//table-->
+            </div><!--//table-responsive-->
+        </div><!--//page-row-->
+    </div><!--//page-content-->
+</div><!--//content-->
+{% endblock %}

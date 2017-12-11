@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Lista Solicitantes{% endblock %}
+
+{% block content %}
+<div class="content container">
+    <div class="content-wrapper col-md-10 col-sm-8">
+        <div class="page-row">
+            <h1 class="no-margin-top has-divider text-highlight">Actualizar Solicitantes</h1>
+            <div class="table-responsive">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form_solicitante.as_p }}
+                    <button id="editar_status" type="submit" class="btn btn-primary">Actualizar</button>
+                </form>
+            </div><!--//table-responsive-->
+        </div><!--//page-row-->
+    </div><!--//page-content-->
+</div><!--//content-->
+{% endblock %}

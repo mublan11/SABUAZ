@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="content container">
+    <div class="content-wrapper col-md-10 col-sm-8">
+        <div class="page-row">
+            <h1 class="no-margin-top has-divider text-highlight">Supervisores</h1>
+            <table class="table table-bordered">
+<thead>
+<td>#</td>
+<td>Nombre Completo</td>
+<td>Comedor Asignado</td>
+<td>Casa Asignada</td>
+<td>Acciones</td>
+</thead>
+<tbody>
+{% if supervisor %}
+{% for su in supervisor %}
+<tr>
+<td>{{ su.id }}</td>
+<td>{{ su.nombre }} {{ su.apellido_paterno }} {{ su.apellido_materno }}</td>
+<td>{{ su.comedor_fk.nombre }}</td>
+<td>{{ su.casas_estudiantil_fk.nombre }}</td>
+<td>
+<a class="btn btn-primary" href="{% url 'supervisor:supervisor_editar' su.id %}">
+Editar
+</a>
+<a class="btn btn-danger" href="{% url 'supervisor:supervisor_eliminar' su.id %}">
+Eliminar
+</a>
+</td>
+</tr>
+{% endfor %}
+{% else %}
+<h1>No hay registros de supervisor</h1>
+{% endif %}
+</tbody>
+</table>
+            <div class="table-responsive">
+            </div><!--//table-responsive-->
+        </div><!--//page-row-->
+    </div><!--//page-content-->
+</div><!--//content-->
+{% endblock %}
+
+
+
