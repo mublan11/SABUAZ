@@ -26,6 +26,7 @@ before_install:
 install:
   #- pip install -r requirements.txt
   - pip install django==$DJANGO --quiet
+  - pip install djangorestframework coreapi markdown django-filter django-crispy-forms django-guardian
   #- pip install psycopg2 --quiet
 
 before_script:
